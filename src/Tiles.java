@@ -18,7 +18,7 @@ public class Tiles {
                 if (tiles[i][j] < 10 && tiles[i][j] > 0){
                     System.out.print(" " + tiles[i][j]);
                 }else if (tiles[i][j] == 0) {
-                    System.out.print(" □");
+                    System.out.print("[]");
                 }else{
                     System.out.print(tiles[i][j]);
                 }
