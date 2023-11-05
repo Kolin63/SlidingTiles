@@ -6,6 +6,7 @@ public class Tiles {
     Menu menu;
     Random random = new Random();
     boolean tilesGenerated;
+    int turnNumber;
 
     public Tiles(Menu menu) {
         this.menu = menu;
@@ -23,6 +24,12 @@ public class Tiles {
                     System.out.print(tiles[i][j]);
                 }
                 System.out.print(" ");
+            }
+
+            // Turn Display
+            System.out.print("   || ");
+            if (j == 0){
+                System.out.print("Turn " + turnNumber);
             }
         }
     }
@@ -85,11 +92,10 @@ public class Tiles {
             }else{
                 tiles[data[0][0]][data[0][1]] = tiles[data[3][0]][data[3][1]];
                 tiles[data[3][0]][data[3][1]] = 0;
+                turnNumber++;
             }
-        }
-
-        // Left
-        if (input == 'a'){
+        }else if (input == 'a'){
+            // Left
             if (data[4][0] == -1){
                 if (tilesGenerated){
                     System.out.println("You can't do that!");
@@ -97,11 +103,10 @@ public class Tiles {
             }else{
                 tiles[data[0][0]][data[0][1]] = tiles[data[4][0]][data[4][1]];
                 tiles[data[4][0]][data[4][1]] = 0;
+                turnNumber++;
             }
-        }
-
-        // Down
-        if (input == 's'){
+        }else if(input == 's'){
+            // Down
             if (data[1][0] == -1){
                 if (tilesGenerated){
                     System.out.println("You can't do that!");
@@ -109,11 +114,10 @@ public class Tiles {
             }else{
                 tiles[data[0][0]][data[0][1]] = tiles[data[1][0]][data[1][1]];
                 tiles[data[1][0]][data[1][1]] = 0;
+                turnNumber++;
             }
-        }
-
-        // Right
-        if (input == 'd'){
+        }else if(input == 'd'){
+            // Right
             if (data[2][0] == -1){
                 if (tilesGenerated){
                     System.out.println("You can't do that!");
@@ -121,21 +125,18 @@ public class Tiles {
             }else{
                 tiles[data[0][0]][data[0][1]] = tiles[data[2][0]][data[2][1]];
                 tiles[data[2][0]][data[2][1]] = 0;
+                turnNumber++;
             }
-        }
-
-
-        // Commands
-        if (input == 'q'){
+        }else if(input == 'q'){
+            // Commands
             menu.reload();
-        }
-
-        if (input == 'z'){
+        }else if(input == 'z'){
             this.load(-1);
         }
     }
 
     public void load(int puzzle){
+        turnNumber = 0;
         if (puzzle == -1){
             int k = 0;
             for (int j=0;j<4;j++){
@@ -154,6 +155,7 @@ public class Tiles {
                 }
             }
             this.randomizeTiles();
+            turnNumber = 0;
         }
     }
 

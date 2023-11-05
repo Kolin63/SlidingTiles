@@ -37,9 +37,7 @@ char input;
                 tiles.print();
                 firstPrint = true;
             }
-        }
-
-        if (input == 'H' || input == 'h'){
+        }else if (input == 'H' || input == 'h'){
             System.out.println("Project made by Kolin63 on Github: https://github.com/Kolin63/SlidingTiles\n");
             System.out.println("This is a game where you have to 'slide' tiles to organize them in a way in which they are ordered 1 - 15.");
             System.out.println("You are given a 4 x 4 grid, and one of the tiles are blank. ");
@@ -51,10 +49,10 @@ char input;
             System.out.println("\nPress any key to continue.");
             scanner.next();
             this.reload();
-        }
-
-        if (input == 'Q' || input == 'q'){
+        }else if (input == 'Q' || input == 'q'){
             Main.gameRunning = false;
+        }else{
+            this.reload();
         }
     }
 }
